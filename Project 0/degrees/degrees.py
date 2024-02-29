@@ -91,7 +91,7 @@ def shortest_path(source, target):
 
     If no possible path, returns None.
     """
-    start = Node(state=source, parent=None, action=None)
+    start = Node(source, None, None)
     frontier = QueueFrontier()
     frontier.add(start)
 
@@ -112,13 +112,13 @@ def shortest_path(source, target):
             solution.reverse()
             return solution
 
-        explored.add(node.state)
+        explored.add(node)
 
         # in the event that we did not find the target
         for movie, actor in neighbors_for_person(node.state):
             # actor should not be in frontier and have not been explored yet
             if actor not in explored and not frontier.contains_state(actor):
-                newNode = Node(state=actor, parent=node, action=movie)
+                newNode = Node(actor, node, movie)
                 frontier.add(newNode)
 
 def person_id_for_name(name):
