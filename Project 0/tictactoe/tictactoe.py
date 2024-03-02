@@ -168,7 +168,6 @@ def minimax(board):
     # return any possible action
     return actions(board).pop()
 
-# returns int, action
 def get_max_utility(board):
     # since the least value is -1, we will use that
     currentMax = -1
